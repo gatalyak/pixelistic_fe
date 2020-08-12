@@ -36,6 +36,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: $(dockerRegistryServiceConnection)
+        repository: $(imageRepository)
         command: build
         Dockerfile: $(dockerfilePath)
         arguments: '--build-arg API_WEB=http://pixelistic.southcentralus.cloudapp.azure.com'
