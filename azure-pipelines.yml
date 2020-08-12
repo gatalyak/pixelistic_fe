@@ -34,9 +34,16 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - task: Docker@2
-      displayName: Build and push an image to container registry
       inputs:
-        command: buildAndPush
+        containerRegistry: $(dockerRegistryServiceConnection)
+        command: build
+        Dockerfile: $(dockerfilePath)
+        arguments: '--build-arg API_WEB=http://pixelistic.southcentralus.cloudapp.azure.com'
+        
+    - task: Docker@2
+      displayName: Push an image to container registry
+      inputs:
+        command: push
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
