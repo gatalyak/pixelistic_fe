@@ -2,8 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gatalyakpixelisticfe 
+  labels:
+    app: gatalyakpixelisticfe
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: gatalyakpixelisticfe
   template:
     metadata:
       labels:
