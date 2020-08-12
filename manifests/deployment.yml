@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: gatalyakpixelisticfe 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gatalyakpixelisticfe 
+    spec:
+      containers:
+        - name: gatalyakpixelisticfe 
+          image: pixelisticacr.azurecr.io/gatalyakpixelisticfe
+          ports:
+          - containerPort: 80
