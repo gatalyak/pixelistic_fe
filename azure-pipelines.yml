@@ -39,7 +39,7 @@ stages:
         repository: $(imageRepository)
         command: build
         Dockerfile: $(dockerfilePath)
-        arguments: '--build-arg REACT_APP_API_WEB=http://pixelistic.southcentralus.cloudapp.azure.com'
+        arguments: '--build-arg REACT_APP_API_WEB=$(REACT_APP_API_WEB) REACT_APP_AWS_S3=$(REACT_APP_AWS_S3)'
         
     - task: Docker@2
       displayName: Push an image to container registry
