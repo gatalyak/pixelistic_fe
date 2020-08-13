@@ -9,20 +9,28 @@ resources:
 - repo: self
 
 variables:
-
+- group: pixelistic
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '5e09e0b0-dbbc-4dcd-80dc-d1d4bd5bbcd8'
-  imageRepository: 'gatalyakpixelisticfe'
-  containerRegistry: 'pixelisticacr.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
-  tag: '$(Build.BuildId)'
-  imagePullSecret: 'pixelisticacr5d3a-auth'
+- name: dockerRegistryServiceConnection
+  value: '5e09e0b0-dbbc-4dcd-80dc-d1d4bd5bbcd8'
+- name: imageRepository
+  value: 'gatalyakpixelisticfe'
+- name: containerRegistry
+  value: 'pixelisticacr.azurecr.io'
+- name: dockerfilePath
+  value: '**/Dockerfile'
+- name: tag
+  value: '$(Build.BuildId)'
+- name: imagePullSecret
+  value: 'pixelisticacr5d3a-auth'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+- name: vmImageName
+  value: 'ubuntu-latest'
   
   # Name of the new namespace being created to deploy the PR changes.
-  k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
+- name: k8sNamespaceForPR
+  value: 'review-app-$(System.PullRequest.PullRequestId)'
 
 stages:
 - stage: Build
